@@ -15,8 +15,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("views/main.fxml"));
-        Image icon = new Image("icon.png");
+        Parent root = FXMLLoader.load(getClass().getResource("views/home.fxml"));
+        Image icon = new Image("todo/icons/icon.png");
 
         stage.setTitle("Tickk");
         stage.getIcons().add(icon);
