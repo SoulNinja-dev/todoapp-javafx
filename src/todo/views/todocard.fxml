@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.layout.HBox?>
+
+
+<HBox fx:id="todoItem" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" spacing="10.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="todo.controllers.TodoController">
+   <children>
+      <RadioButton mnemonicParsing="false" prefHeight="48.0" prefWidth="17.0" style="-fx-alignment: center;">
+         <HBox.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </HBox.margin>
+      </RadioButton>
+      <Label fx:id="todoTitle" prefHeight="48.0" prefWidth="234.0" text="not null" />
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</HBox>

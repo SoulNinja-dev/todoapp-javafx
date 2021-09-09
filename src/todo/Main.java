@@ -21,6 +21,7 @@ public class Main extends Application {
         stage.setTitle("Tickk");
         stage.getIcons().add(icon);
         stage.setScene(new Scene(root));
+        stage.setResizable(false);
         stage.show();
     }
 
