@@ -32,12 +32,13 @@ public class HomeController {
     @FXML
     public void onAddTodoClick(ActionEvent event) throws IOException {
         String todoTitle = addTodoField.getText();
-        // System.out.println(todoTitle);
         // TODO: verify it's not null
+
         HBox todoCard = FXMLLoader.load(getClass().getResource("../views/todocard.fxml"));
-        Label newLabel = new Label(todoTitle);
-        System.out.println(todoCard.getChildren().set(1,newLabel));
+        Label oldLabel = (Label) todoCard.getChildren().get(1);
+
+        oldLabel.setText(todoTitle);
+        todoCard.getChildren().set(1,oldLabel);
         todoList.getChildren().add(todoCard);
-        System.out.println(todoList.getChildren());
     }
 }
