@@ -1,20 +1,25 @@
 package todo.controllers;
 
+import javafx.collections.ObservableArray;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.control.Button;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
 public class HomeController {
     @FXML
     private TextField addTodoField;
+
+    @FXML
+    private VBox rootPane;
 
     @FXML
     private FlowPane todoList;
@@ -32,13 +37,34 @@ public class HomeController {
     @FXML
     public void onAddTodoClick(ActionEvent event) throws IOException {
         String todoTitle = addTodoField.getText();
-        // TODO: verify it's not null
 
-        HBox todoCard = FXMLLoader.load(getClass().getResource("../views/todocard.fxml"));
-        Label oldLabel = (Label) todoCard.getChildren().get(1);
+        if(todoTitle.isEmpty()) {
+            boolean doesErrorExist = false;
 
-        oldLabel.setText(todoTitle);
-        todoCard.getChildren().set(1,oldLabel);
-        todoList.getChildren().add(todoCard);
+            // checks if there's already an errorLabel in the rootpane.
+            ObservableList<Node> children = rootPane.getChildren();
+            for(Node node : children) {
+                if(node.getId() == null) {}
+                else if(node.getId().equals("errorLabel")) {
+                    doesErrorExist = true;
+                    break;
+                }
+            }
+            if(!doesErrorExist) {
+                // only add error label when doesErrorExist is false
+                Label error = FXMLLoader.load(getClass().getResource("../components/errorLabel.fxml"));
+                rootPane.getChildren().add(2, error);
+            }
+        }
+        else {
+            // when it's not null, add a todo
+
+            HBox todoCard = FXMLLoader.load(getClass().getResource("../views/todocard.fxml"));
+            Label oldLabel = (Label) todoCard.getChildren().get(1);
+
+            oldLabel.setText(todoTitle);
+            todoCard.getChildren().set(1, oldLabel);
+            todoList.getChildren().add(todoCard);
+        }
     }
 }

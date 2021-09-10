@@ -4,16 +4,25 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-
-<HBox fx:id="todoItem" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" spacing="10.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="todo.controllers.TodoController">
+<HBox fx:id="todoItem" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="todo.controllers.TodoController">
    <children>
-      <RadioButton mnemonicParsing="false" prefHeight="48.0" prefWidth="17.0" style="-fx-alignment: center;">
+      <RadioButton mnemonicParsing="false" prefHeight="48.0" prefWidth="17.0" style="-fx-background-color: transparent;">
          <HBox.margin>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
          </HBox.margin>
+         <font>
+            <Font size="16.0" />
+         </font>
       </RadioButton>
-      <Label fx:id="todoTitle" prefHeight="48.0" prefWidth="234.0" text="not null" />
+      <Label fx:id="todoTitle" prefHeight="68.0" prefWidth="234.0" text="Lorem ipsum dolor sit amet, consectetuer adipiscin" wrapText="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <HBox.margin>
+            <Insets top="5.0" />
+         </HBox.margin></Label>
    </children>
    <padding>
       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
