@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -77,31 +76,6 @@
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" />
                      </padding>
-                     <children>
-                        <HBox fx:id="todoItem" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0">
-                           <children>
-                              <RadioButton mnemonicParsing="false" prefHeight="48.0" prefWidth="17.0" style="-fx-background-color: transparent;">
-                                 <HBox.margin>
-                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                                 </HBox.margin>
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </RadioButton>
-                              <Label fx:id="todoTitle" prefHeight="68.0" prefWidth="234.0" text="Lorem ipsum dolor sit amet, consectetuer adipiscin" wrapText="true">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets top="5.0" />
-                                 </HBox.margin>
-                              </Label>
-                           </children>
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                        </HBox>
-                     </children>
                   </FlowPane>
                </content>
             </ScrollPane>

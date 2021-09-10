@@ -72,6 +72,9 @@ public class HomeController {
             oldLabel.setText(todoTitle);
             todoCard.getChildren().set(1, oldLabel);
             todoList.getChildren().add(todoCard);
+
+            // clear todofield
+            addTodoField.setText("");
         }
     }
 }
