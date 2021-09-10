@@ -1,6 +1,5 @@
 package todo.controllers;
 
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +14,7 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 
 public class HomeController {
+
     @FXML
     private TextField addTodoField;
 
@@ -57,7 +57,14 @@ public class HomeController {
             }
         }
         else {
-            // when it's not null, add a todo
+            // when it's not null, add a todoItem
+
+            // remove errorLabel if it exists
+            if(rootPane.getChildren().get(2).getId() != null) {
+                if(rootPane.getChildren().get(2).getId().equals("errorLabel")) {
+                    rootPane.getChildren().remove(2);
+                }
+            }
 
             HBox todoCard = FXMLLoader.load(getClass().getResource("../views/todocard.fxml"));
             Label oldLabel = (Label) todoCard.getChildren().get(1);
