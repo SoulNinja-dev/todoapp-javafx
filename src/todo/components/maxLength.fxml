@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.text.Font?>
+
+<Label fx:id="errorLabel" prefHeight="18.0" prefWidth="701.0" style="-fx-alignment: center; -fx-text-fill: red;" text="Max character limit reached." xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+    <font>
+        <Font size="18.0" />
+    </font>
+</Label>

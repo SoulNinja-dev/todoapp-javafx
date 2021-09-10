@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class HomeController {
 
@@ -41,54 +42,64 @@ public class HomeController {
         addTodo();
     }
 
-    private void addTodo() throws IOException {
-
-        String todoTitle = addTodoField.getText();
-
-        if(todoTitle.isEmpty()) {
-            boolean doesErrorExist = false;
-
-            // checks if there's already an errorLabel in the rootpane.
-            ObservableList<Node> children = rootPane.getChildren();
-            for(Node node : children) {
-                if(node.getId() == null) {}
-                else if(node.getId().equals("errorLabel")) {
-                    doesErrorExist = true;
-                    break;
-                }
-            }
-            if(!doesErrorExist) {
-                // only add error label when doesErrorExist is false
-                Label error = FXMLLoader.load(getClass().getResource("../components/errorLabel.fxml"));
-                rootPane.getChildren().add(2, error);
-            }
-        }
-        else {
-            // when it's not null, add a todoItem
-
-            // remove errorLabel if it exists
-            if(rootPane.getChildren().get(2).getId() != null) {
-                if(rootPane.getChildren().get(2).getId().equals("errorLabel")) {
-                    rootPane.getChildren().remove(2);
-                }
-            }
-
-            HBox todoCard = FXMLLoader.load(getClass().getResource("../views/todocard.fxml"));
-            Label oldLabel = (Label) todoCard.getChildren().get(1);
-
-            oldLabel.setText(todoTitle);
-            todoCard.getChildren().set(1, oldLabel);
-            todoList.getChildren().add(todoCard);
-
-            // clear todofield
-            addTodoField.setText("");
-        }
-    }
-
     @FXML
     public void onKeyPressed(KeyEvent event) throws IOException {
         if(event.getCode() == KeyCode.ENTER) {
             addTodo();
+        }
+    }
+
+    private void addTodo() throws IOException {
+        removeErrors();
+        // getting text inside textfield
+        String todoTitle = addTodoField.getText();
+
+        // when todoTitle is greater than 50
+        if(todoTitle.length() > 50) {
+            maxLengthError();
+        }
+        // when todoTitle is null
+        else if(todoTitle.isEmpty()) {
+            nullLengthError();
+        }
+        // perfect scenario
+        else {
+            addTodoToPane(todoTitle);
+        }
+    }
+
+    private void maxLengthError() throws IOException {
+        Label maxLengthError = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../components/maxLength.fxml")));
+        rootPane.getChildren().add(2, maxLengthError);
+    }
+
+    private void nullLengthError() throws IOException {
+        removeErrors();
+        Label error = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../components/errorLabel.fxml")));
+        rootPane.getChildren().add(2, error);
+    }
+
+    private void addTodoToPane(String todoTitle) throws IOException {
+        removeErrors();
+        HBox todoCard = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../views/todocard.fxml")));
+        Label oldLabel = (Label) todoCard.getChildren().get(1);
+
+        oldLabel.setText(todoTitle);
+        todoCard.getChildren().set(1, oldLabel);
+        todoList.getChildren().add(todoCard);
+
+        // clear todofield
+        addTodoField.setText("");
+    }
+
+    private void removeErrors() {
+        // checks if error exists, then removes it
+        ObservableList<Node> children = rootPane.getChildren();
+        for(int i = 0;i<children.size();i++) {
+            if(children.get(i).getId() == null){}
+            else if(children.get(i).getId().equals("errorLabel")) {
+                rootPane.getChildren().remove(i);
+            }
         }
     }
 }
