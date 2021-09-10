@@ -8,7 +8,7 @@
 
 <HBox fx:id="todoItem" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="todo.controllers.TodoController">
    <children>
-      <RadioButton mnemonicParsing="false" prefHeight="48.0" prefWidth="17.0" style="-fx-background-color: transparent;">
+      <RadioButton mnemonicParsing="false" onAction="#onTodoDone" prefHeight="48.0" prefWidth="17.0" style="-fx-background-color: transparent;">
          <HBox.margin>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
          </HBox.margin>

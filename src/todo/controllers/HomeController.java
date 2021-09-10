@@ -7,6 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -36,6 +38,11 @@ public class HomeController {
 
     @FXML
     public void onAddTodoClick(ActionEvent event) throws IOException {
+        addTodo();
+    }
+
+    private void addTodo() throws IOException {
+
         String todoTitle = addTodoField.getText();
 
         if(todoTitle.isEmpty()) {
@@ -75,6 +82,13 @@ public class HomeController {
 
             // clear todofield
             addTodoField.setText("");
+        }
+    }
+
+    @FXML
+    public void onKeyPressed(KeyEvent event) throws IOException {
+        if(event.getCode() == KeyCode.ENTER) {
+            addTodo();
         }
     }
 }
