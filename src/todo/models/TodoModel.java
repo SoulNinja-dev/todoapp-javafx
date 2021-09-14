@@ -2,10 +2,9 @@ package todo.models;
 
 import todo.SqliteConnection;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class TodoModel {
@@ -51,5 +50,21 @@ public class TodoModel {
             Objects.requireNonNull(preparedStatement).close();
             Objects.requireNonNull(resultSet).close();
         }
+    }
+
+    public ArrayList<String> getTodos() throws SQLException {
+        PreparedStatement preparedStatement;
+        ResultSet resultSet;
+        String query = "select title from todos";
+
+        preparedStatement = connection.prepareStatement(query);
+        resultSet = preparedStatement.executeQuery();
+
+        ArrayList<String> todos = new ArrayList<>();
+        while(resultSet.next()) {
+            todos.add(resultSet.getString("title"));
+        }
+
+        return todos;
     }
 }

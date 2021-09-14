@@ -19,6 +19,7 @@ import todo.models.TodoModel;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -35,6 +36,29 @@ public class HomeController implements Initializable {
     @FXML
     private FlowPane todoList;
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        ArrayList<String> existingTodo;
+
+        if(todoModel.isDbConnected()) {
+            System.out.println("Db is connected");
+        } else {
+            System.out.println("Nope, not connected");
+        }
+
+        try {
+            if(todoModel.isTodoPresent()) {
+                existingTodo = todoModel.getTodos();
+                addOldTodos(existingTodo);
+            } else {
+                addNothingLabel();
+            }
+        } catch (SQLException | IOException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
     @FXML
     public void onAvatarClick(ActionEvent event) {
         System.out.println("avatar was clicked");
@@ -47,20 +71,22 @@ public class HomeController implements Initializable {
 
     @FXML
     public void onAddTodoClick(ActionEvent event) throws IOException {
-        addTodo();
+        // getting text inside textfield
+        String todoTitle = addTodoField.getText();
+        addTodo(todoTitle);
     }
 
     @FXML
     public void onKeyPressed(KeyEvent event) throws IOException {
         if(event.getCode() == KeyCode.ENTER) {
-            addTodo();
+            // getting text inside textfield
+            String todoTitle = addTodoField.getText();
+            addTodo(todoTitle);
         }
     }
 
-    private void addTodo() throws IOException {
+    private void addTodo(String todoTitle) throws IOException {
         removeErrors();
-        // getting text inside textfield
-        String todoTitle = addTodoField.getText();
 
         // when todoTitle is greater than 50
         if(todoTitle.length() > 50) {
@@ -120,27 +146,14 @@ public class HomeController implements Initializable {
         }
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        if(todoModel.isDbConnected()) {
-            System.out.println("Db is connected");
-        } else {
-            System.out.println("Nope, not connected");
-        }
-
-        try {
-            if(todoModel.isTodoPresent()) {
-                System.out.println("there are todos present");
-            } else {
-                addNothingLabel();
-            }
-        } catch (SQLException | IOException throwables) {
-            throwables.printStackTrace();
-        }
+    private void addNothingLabel() throws IOException {
+        Parent label = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../components/nothingTodo.fxml")));
+        todoList.getChildren().add(label);
     }
 
-    private void addNothingLabel() throws IOException {
-        Parent label = FXMLLoader.load(getClass().getResource("../components/nothingTodo.fxml"));
-        todoList.getChildren().add(label);
+    private void addOldTodos(ArrayList<String> existingTodo) throws IOException {
+        for(String todo:existingTodo) {
+            addTodo(todo);
+        }
     }
 }
