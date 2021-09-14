@@ -5,6 +5,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
+import todo.models.TodoModel;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class TodoController {
 
@@ -15,8 +19,9 @@ public class TodoController {
     private Label todoTitle;
 
     @FXML
-    public void onTodoDone(ActionEvent event) {
+    public void onTodoDone(ActionEvent event) throws SQLException {
         FlowPane root = (FlowPane) todoItem.getParent();
+        TodoModel.getInstance().deleteTodo(todoTitle.getText());
         root.getChildren().remove(todoItem);
     }
 }

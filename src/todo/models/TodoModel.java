@@ -9,6 +9,8 @@ import java.util.Objects;
 
 public class TodoModel {
 
+    private static TodoModel INSTANCE = null;
+
     Connection connection;
 
     public TodoModel() {
@@ -18,6 +20,13 @@ public class TodoModel {
             System.out.println("EXITING!");
             System.exit(0);
         }
+    }
+
+    public static TodoModel getInstance() {
+        if(INSTANCE == null) {
+            INSTANCE = new TodoModel();
+        }
+        return INSTANCE;
     }
 
     public boolean isDbConnected() {
@@ -64,6 +73,15 @@ public class TodoModel {
     public void addTodo(String title) throws SQLException {
         PreparedStatement preparedStatement;
         String query = "INSERT INTO todos (title) VALUES( ? );";
+
+        preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, title);
+        preparedStatement.executeUpdate();
+    }
+
+    public void deleteTodo(String title) throws SQLException {
+        PreparedStatement preparedStatement;
+        String query = "WITH todo AS (SELECT id FROM todos WHERE title = ? LIMIT 1) DELETE FROM todos WHERE id = (SELECT id FROM todo)";
 
         preparedStatement = connection.prepareStatement(query);
         preparedStatement.setString(1, title);

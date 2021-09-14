@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
 
-    public TodoModel todoModel = new TodoModel();
+    private boolean doesErrorExist;
 
     @FXML
     private TextField addTodoField;
@@ -41,15 +41,15 @@ public class HomeController implements Initializable {
 
         ArrayList<String> existingTodo;
 
-        if(todoModel.isDbConnected()) {
+        if(TodoModel.getInstance().isDbConnected()) {
             System.out.println("Db is connected");
         } else {
             System.out.println("Nope, not connected");
         }
 
         try {
-            if(todoModel.isTodoPresent()) {
-                existingTodo = todoModel.getTodos();
+            if(TodoModel.getInstance().isTodoPresent()) {
+                existingTodo = TodoModel.getInstance().getTodos();
                 addOldTodos(existingTodo);
             } else {
                 addNothingLabel();
@@ -74,7 +74,7 @@ public class HomeController implements Initializable {
         // getting text inside textfield
         String todoTitle = addTodoField.getText();
         addTodo(todoTitle);
-        todoModel.addTodo(todoTitle);
+        if(!doesErrorExist) TodoModel.getInstance().addTodo(todoTitle);
     }
 
     @FXML
@@ -83,7 +83,7 @@ public class HomeController implements Initializable {
             // getting text inside textfield
             String todoTitle = addTodoField.getText();
             addTodo(todoTitle);
-            todoModel.addTodo(todoTitle);
+            if(!doesErrorExist) TodoModel.getInstance().addTodo(todoTitle);
         }
     }
 
@@ -93,14 +93,17 @@ public class HomeController implements Initializable {
         // when todoTitle is greater than 50
         if(todoTitle.length() > 50) {
             maxLengthError();
+            doesErrorExist = true;
         }
         // when todoTitle is null
         else if(todoTitle.isEmpty()) {
             nullLengthError();
+            doesErrorExist = true;
         }
         // perfect scenario
         else {
             addTodoToPane(todoTitle);
+            doesErrorExist = false;
         }
     }
 
@@ -153,7 +156,7 @@ public class HomeController implements Initializable {
         todoList.getChildren().add(label);
     }
 
-    private void addOldTodos(ArrayList<String> existingTodo) throws IOException {
+    private void addOldTodos(ArrayList<String> existingTodo) throws IOException, SQLException {
         for(String todo:existingTodo) {
             addTodo(todo);
         }
