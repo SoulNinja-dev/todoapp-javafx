@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.text.Font?>
+
+<Label fx:id="errorLabel" layoutX="1.0" prefHeight="54.0" prefWidth="190.0" text="Nothing to do! Go take a break!"
+       wrapText="true" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+         <font>
+            <Font size="15.0" />
+         </font>
+</Label>

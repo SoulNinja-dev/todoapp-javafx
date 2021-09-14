@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -17,6 +18,7 @@ import todo.models.TodoModel;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -100,11 +102,20 @@ public class HomeController implements Initializable {
 
     private void removeErrors() {
         // checks if error exists, then removes it
-        ObservableList<Node> children = rootPane.getChildren();
-        for(int i = 0;i<children.size();i++) {
-            if(children.get(i).getId() == null){}
-            else if(children.get(i).getId().equals("errorLabel")) {
+        ObservableList<Node> errors = rootPane.getChildren();
+        ObservableList<Node> todos = todoList.getChildren();
+
+        for(int i = 0;i<errors.size();i++) {
+            if(errors.get(i).getId() == null){}
+            else if(errors.get(i).getId().equals("errorLabel")) {
                 rootPane.getChildren().remove(i);
+            }
+        }
+
+        for(int i = 0;i<todos.size();i++) {
+            if(todos.get(i).getId() == null){}
+            else if(todos.get(i).getId().equals("errorLabel")) {
+                todoList.getChildren().remove(i);
             }
         }
     }
@@ -116,5 +127,20 @@ public class HomeController implements Initializable {
         } else {
             System.out.println("Nope, not connected");
         }
+
+        try {
+            if(todoModel.isTodoPresent()) {
+                System.out.println("there are todos present");
+            } else {
+                addNothingLabel();
+            }
+        } catch (SQLException | IOException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    private void addNothingLabel() throws IOException {
+        Parent label = FXMLLoader.load(getClass().getResource("../components/nothingTodo.fxml"));
+        todoList.getChildren().add(label);
     }
 }

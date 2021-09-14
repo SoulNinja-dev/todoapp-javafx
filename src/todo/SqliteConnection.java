@@ -10,6 +10,7 @@ public class SqliteConnection {
             Connection conn = DriverManager.getConnection("jdbc:sqlite:mydb.db");
             return conn;
         } catch (Exception e){
+            System.out.println(e);
             return null;
         }
     }
