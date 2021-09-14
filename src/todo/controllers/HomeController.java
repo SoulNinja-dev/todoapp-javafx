@@ -4,6 +4,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -12,11 +13,16 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import todo.models.TodoModel;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class HomeController {
+public class HomeController implements Initializable {
+
+    public TodoModel todoModel = new TodoModel();
 
     @FXML
     private TextField addTodoField;
@@ -100,6 +106,15 @@ public class HomeController {
             else if(children.get(i).getId().equals("errorLabel")) {
                 rootPane.getChildren().remove(i);
             }
+        }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        if(todoModel.isDbConnected()) {
+            System.out.println("Db is connected");
+        } else {
+            System.out.println("Nope, not connected");
         }
     }
 }

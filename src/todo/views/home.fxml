@@ -20,9 +20,9 @@
          <children>
             <HBox prefHeight="44.0" prefWidth="700.0">
                <children>
-                  <Button fx:id="menuButton" mnemonicParsing="false" onAction="#onMenuClick" prefHeight="71.0" prefWidth="79.0" style="-fx-background-color: transparent;">
+                  <Button fx:id="menuButton" mnemonicParsing="false" onAction="#onMenuClick" prefHeight="38.0" prefWidth="62.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <ImageView fitHeight="66.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="44.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../icons/menu.png" />
                            </image>
@@ -38,7 +38,7 @@
                   <Region prefHeight="44.0" prefWidth="258.0" />
                   <Button fx:id="avatarButton" mnemonicParsing="false" onAction="#onAvatarClick" prefHeight="50.0" prefWidth="58.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <ImageView fitHeight="48.0" fitWidth="53.0">
+                        <ImageView fitHeight="38.0" fitWidth="43.0">
                            <image>
                               <Image url="@../icons/avatar.png" />
                            </image>
