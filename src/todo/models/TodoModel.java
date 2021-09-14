@@ -37,11 +37,7 @@ public class TodoModel {
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
 
-            if(resultSet.next()) {
-                return true;
-            } else {
-                return false;
-            }
+            return resultSet.next();
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -66,5 +62,14 @@ public class TodoModel {
         }
 
         return todos;
+    }
+
+    public void addTodo(String title) throws SQLException {
+        PreparedStatement preparedStatement;
+        String query = "INSERT INTO todos (title) VALUES( ? );";
+
+        preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, title);
+        preparedStatement.executeUpdate();
     }
 }

@@ -70,10 +70,11 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    public void onAddTodoClick(ActionEvent event) throws IOException {
+    public void onAddTodoClick(ActionEvent event) throws IOException, SQLException {
         // getting text inside textfield
         String todoTitle = addTodoField.getText();
         addTodo(todoTitle);
+        todoModel.addTodo(todoTitle);
     }
 
     @FXML
