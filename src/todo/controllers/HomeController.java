@@ -78,11 +78,12 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    public void onKeyPressed(KeyEvent event) throws IOException {
+    public void onKeyPressed(KeyEvent event) throws IOException, SQLException {
         if(event.getCode() == KeyCode.ENTER) {
             // getting text inside textfield
             String todoTitle = addTodoField.getText();
             addTodo(todoTitle);
+            todoModel.addTodo(todoTitle);
         }
     }
 

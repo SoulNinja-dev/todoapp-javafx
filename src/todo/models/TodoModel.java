@@ -42,9 +42,6 @@ public class TodoModel {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
             return false;
-        } finally {
-            Objects.requireNonNull(preparedStatement).close();
-            Objects.requireNonNull(resultSet).close();
         }
     }
 
@@ -72,4 +69,5 @@ public class TodoModel {
         preparedStatement.setString(1, title);
         preparedStatement.executeUpdate();
     }
+
 }
