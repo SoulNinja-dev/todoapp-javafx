@@ -8,7 +8,7 @@ import javafx.scene.layout.HBox;
 import todo.models.TodoModel;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
+
 
 public class TodoController {
 

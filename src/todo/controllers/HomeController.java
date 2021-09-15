@@ -87,7 +87,7 @@ public class HomeController implements Initializable {
         }
     }
 
-    private void addTodo(String todoTitle) throws IOException {
+    public void addTodo(String todoTitle) throws IOException {
         removeErrors();
 
         // when todoTitle is greater than 50
@@ -107,18 +107,18 @@ public class HomeController implements Initializable {
         }
     }
 
-    private void maxLengthError() throws IOException {
+    public void maxLengthError() throws IOException {
         Label maxLengthError = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../components/maxLength.fxml")));
         rootPane.getChildren().add(2, maxLengthError);
     }
 
-    private void nullLengthError() throws IOException {
+    public void nullLengthError() throws IOException {
         removeErrors();
         Label error = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../components/errorLabel.fxml")));
         rootPane.getChildren().add(2, error);
     }
 
-    private void addTodoToPane(String todoTitle) throws IOException {
+    public void addTodoToPane(String todoTitle) throws IOException {
         removeErrors();
         HBox todoCard = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../views/todocard.fxml")));
         Label oldLabel = (Label) todoCard.getChildren().get(1);
@@ -131,7 +131,7 @@ public class HomeController implements Initializable {
         addTodoField.setText("");
     }
 
-    private void removeErrors() {
+    public void removeErrors() {
         // checks if error exists, then removes it
         ObservableList<Node> errors = rootPane.getChildren();
         ObservableList<Node> todos = todoList.getChildren();
@@ -151,14 +151,15 @@ public class HomeController implements Initializable {
         }
     }
 
-    private void addNothingLabel() throws IOException {
+    public void addNothingLabel() throws IOException {
         Parent label = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../components/nothingTodo.fxml")));
         todoList.getChildren().add(label);
     }
 
-    private void addOldTodos(ArrayList<String> existingTodo) throws IOException, SQLException {
+    public void addOldTodos(ArrayList<String> existingTodo) throws IOException, SQLException {
         for(String todo:existingTodo) {
             addTodo(todo);
         }
     }
+
 }
