@@ -87,7 +87,7 @@ public class HomeController implements Initializable {
         }
     }
 
-    public void addTodo(String todoTitle) throws IOException {
+    private void addTodo(String todoTitle) throws IOException {
         removeErrors();
 
         // when todoTitle is greater than 50
@@ -107,18 +107,18 @@ public class HomeController implements Initializable {
         }
     }
 
-    public void maxLengthError() throws IOException {
+    private void maxLengthError() throws IOException {
         Label maxLengthError = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../components/maxLength.fxml")));
         rootPane.getChildren().add(2, maxLengthError);
     }
 
-    public void nullLengthError() throws IOException {
+    private void nullLengthError() throws IOException {
         removeErrors();
         Label error = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../components/errorLabel.fxml")));
         rootPane.getChildren().add(2, error);
     }
 
-    public void addTodoToPane(String todoTitle) throws IOException {
+    private void addTodoToPane(String todoTitle) throws IOException {
         removeErrors();
         HBox todoCard = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../views/todocard.fxml")));
         Label oldLabel = (Label) todoCard.getChildren().get(1);
@@ -131,7 +131,7 @@ public class HomeController implements Initializable {
         addTodoField.setText("");
     }
 
-    public void removeErrors() {
+    private void removeErrors() {
         // checks if error exists, then removes it
         ObservableList<Node> errors = rootPane.getChildren();
         ObservableList<Node> todos = todoList.getChildren();
@@ -151,7 +151,7 @@ public class HomeController implements Initializable {
         }
     }
 
-    public void addNothingLabel() throws IOException {
+    private void addNothingLabel() throws IOException {
         Parent label = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../components/nothingTodo.fxml")));
         todoList.getChildren().add(label);
     }
@@ -161,5 +161,4 @@ public class HomeController implements Initializable {
             addTodo(todo);
         }
     }
-
 }
