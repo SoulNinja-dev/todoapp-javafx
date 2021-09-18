@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="todo:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/todo_jar</output-path>
+    <root id="archive" name="todo.jar">
+      <element id="module-output" name="todo" />
+      <element id="extracted-dir" path="C:/sqlitejdbc/sqlite-jdbc-3.36.0.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/javafx/lib/src.zip" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/javafx/lib/javafx-swt.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/javafx/lib/javafx.web.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/javafx/lib/javafx.base.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/javafx/lib/javafx.fxml.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/javafx/lib/javafx.media.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/javafx/lib/javafx.swing.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/javafx/lib/javafx.controls.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/javafx/lib/javafx.graphics.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
