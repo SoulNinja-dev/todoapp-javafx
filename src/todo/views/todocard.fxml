@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="todoItem" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="todo.controllers.TodoController">
+<HBox fx:id="todoItem" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0" style="-fx-background-color: #282828;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="todo.controllers.TodoController">
    <children>
       <RadioButton mnemonicParsing="false" onAction="#onTodoDone" prefHeight="48.0" prefWidth="17.0" style="-fx-background-color: transparent;">
          <HBox.margin>
@@ -16,7 +16,7 @@
             <Font size="16.0" />
          </font>
       </RadioButton>
-      <Label fx:id="todoTitle" prefHeight="68.0" prefWidth="234.0" text="Lorem ipsum dolor sit amet, consectetuer adipiscin" wrapText="true">
+      <Label fx:id="todoTitle" prefHeight="68.0" prefWidth="234.0" text="Lorem ipsum dolor sit amet, consectetuer adipiscin" textFill="#f7f7f7" wrapText="true">
          <font>
             <Font size="18.0" />
          </font>

@@ -60,16 +60,6 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    public void onAvatarClick(ActionEvent event) {
-        System.out.println("avatar was clicked");
-    }
-
-    @FXML
-    public void onMenuClick(ActionEvent event) {
-        System.out.println("menu was clicked");
-    }
-
-    @FXML
     public void onAddTodoClick(ActionEvent event) throws IOException, SQLException {
         // getting text inside textfield
         String todoTitle = addTodoField.getText();

@@ -5,8 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
@@ -14,47 +12,29 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="todo.controllers.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #282828;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="todo.controllers.HomeController">
    <children>
       <VBox fx:id="rootPane" onKeyPressed="#onKeyPressed" prefHeight="500.0" prefWidth="700.0">
          <children>
             <HBox prefHeight="44.0" prefWidth="700.0">
                <children>
-                  <Button fx:id="menuButton" mnemonicParsing="false" onAction="#onMenuClick" prefHeight="38.0" prefWidth="62.0" style="-fx-background-color: transparent;">
-                     <graphic>
-                        <ImageView fitHeight="41.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/menu.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Region prefHeight="62.0" prefWidth="250.0" />
-                  <Label prefHeight="65.0" prefWidth="68.0" text="Tickk">
+                  <Region prefHeight="45.0" prefWidth="310.0" />
+                  <Label prefHeight="65.0" prefWidth="68.0" text="Tickk" textFill="WHITE">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <Region prefHeight="44.0" prefWidth="258.0" />
-                  <Button fx:id="avatarButton" mnemonicParsing="false" onAction="#onAvatarClick" prefHeight="50.0" prefWidth="58.0" style="-fx-background-color: transparent;">
-                     <graphic>
-                        <ImageView fitHeight="35.0" fitWidth="39.0">
-                           <image>
-                              <Image url="@../icons/avatar.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
+                  <Region prefHeight="45.0" prefWidth="321.0" />
                </children>
             </HBox>
             <HBox prefHeight="54.0" prefWidth="700.0" spacing="25.0">
                <children>
-                  <TextField fx:id="addTodoField" prefHeight="31.0" prefWidth="581.0" promptText="Finish this project">
+                  <TextField fx:id="addTodoField" prefHeight="31.0" prefWidth="581.0" promptText="Finish this project" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 7;">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="addTodoButton" mnemonicParsing="false" onAction="#onAddTodoClick" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 7;" text="Add">
+                  <Button fx:id="addTodoButton" mnemonicParsing="false" onAction="#onAddTodoClick" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 7;" text="Add" textFill="WHITE">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -67,12 +47,12 @@
                   <Insets bottom="5.0" left="25.0" right="5.0" top="10.0" />
                </padding>
             </HBox>
-            <ScrollPane hbarPolicy="NEVER" pannable="true" prefHeight="384.0" prefWidth="700.0" style="-fx-background-color: transparent;">
+            <ScrollPane hbarPolicy="NEVER" pannable="true" prefHeight="377.0" prefWidth="690.0" style="-fx-background-color: #282828;">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
                <content>
-                  <FlowPane fx:id="todoList" hgap="50.0" prefHeight="376.0" prefWidth="698.0">
+                  <FlowPane fx:id="todoList" hgap="50.0" prefHeight="376.0" prefWidth="698.0" style="-fx-background-color: #282828;">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" />
                      </padding>
